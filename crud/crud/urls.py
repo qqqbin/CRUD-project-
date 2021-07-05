@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import include
 import blog.views
+from django.conf import settings
+from django.conf.urls.static import static 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,5 +15,6 @@ urlpatterns = [
     path('delete/<str:id>/', blog.views.delete, name='delete'),
     path('hashtag/', blog.views.hashtagform, name='hashtag'),
     path('<int:hashtag_id>/search/', blog.views.search, name='search'),
+    path('account/', include('account.urls')), 
 
-]
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

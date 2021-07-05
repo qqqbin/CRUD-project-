@@ -18,7 +18,7 @@ def wirte(request):
 
 def create(request, post=None):
     if request.method == 'POST' :
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, request.FILES, instance=post )
         if form.is_valid():
             post = form.save(commit=False)
             post.pub_date = timezone.now()

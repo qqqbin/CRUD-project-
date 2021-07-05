@@ -8,6 +8,9 @@
         <p>제목 : <a href="{% url 'detail' posts.id %}">{{posts.title}}</a> </p>
         <p>작성자 : {{posts.writer}}</p>
         <p>작성 일지 및 시간 : {{ posts.pub_date }}</p>
+        {% if posts.image %} 
+            <img src = "{{ posts.image.url }}" width = "250" height="250" alt="Card iamge cap">
+        {% endif %} 
         <hr>
         {% endfor %}
         
